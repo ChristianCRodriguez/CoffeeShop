@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Register A New Customer";
+}
+
+<h1>Index</h1>
+<form asp-controller="Home" asp-action="RegisterCustomer">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" required placeholder="First Name" class="form-control" name="FirstName" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" required placeholder="Last Name" class="form-control" name="LastName" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" required placeholder="Email" class="form-control" name="Email" />
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="EmailOptedIn">
+                <label class="form-check-label">
+                    I would like to receive promotional emails! *Currently not working*
+                </label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>Mobile Phone</label>
+                <input type="tel" required placeholder="000-000-0000" class="form-control" name="Phone" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" required placeholder="Password" class="form-control" name="Password" />
+            </div>
+            <div class="form-group">
+                <label>Verify Password</label>
+                <input type="password" required placeholder="Re-type Password" class="form-control" id="verifyPassword"/>
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary" />
+</form>
