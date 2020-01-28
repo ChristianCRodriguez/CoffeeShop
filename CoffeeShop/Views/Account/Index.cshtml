@@ -1,9 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Register A New Customer";
 }
-
+    <head>
+        <script src="jquery-3.4.1.min.js"></script>
+    </head>
 <h1>Index</h1>
-<form asp-controller="Home" asp-action="RegisterCustomer">
+<form asp-controller="Home" asp-action="RegisterCustomer" id="registerUser">
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -25,30 +27,47 @@
                 <input type="email" required placeholder="Email" class="form-control" name="Email" />
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="EmailOptedIn">
+                <input class="form-check-input" type="checkbox" value="true" name="EmailOptedIn" />
                 <label class="form-check-label">
-                    I would like to receive promotional emails! *Currently not working*
+                    I would like to receive promotional emails!
                 </label>
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label>Mobile Phone</label>
-                <input type="tel" required placeholder="000-000-0000" class="form-control" name="Phone" />
+                <input type="tel" placeholder="000-000-0000" class="form-control" name="Phone" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="form-group">
+                <label>Username</label>
+                <input type="text" required placeholder="Username" class="form-control" name="Username" />
+            </div>
+            <div class="form-group">
                 <label>Password</label>
-                <input type="password" required placeholder="Password" class="form-control" name="Password" />
+                <input type="password" required placeholder="Password" class="form-control" name="Password" id="password" />
             </div>
             <div class="form-group">
                 <label>Verify Password</label>
-                <input type="password" required placeholder="Re-type Password" class="form-control" id="verifyPassword"/>
+                <input type="password" required placeholder="Re-type Password" class="form-control" id="verifyPassword" />
             </div>
         </div>
     </div>
-    <input type="submit" class="btn btn-primary" />
+    <input type="button" class="btn btn-primary" value="Submit" onclick="SubmitForm()"/>
 </form>
+
+
+<script>
+    function SubmitForm(){
+        var ogPass = document.querySelector("#password").value;
+        var unOgPass = document.querySelector("#verifyPassword").value;
+        if (ogPass != unOgPass) {
+            alert("Passwords do not match, please try again.");
+        } else {
+            document.querySelector("#registerUser").submit();
+        }
+    }
+</script>

@@ -12,6 +12,7 @@ namespace CoffeeShop.Controllers
 {
     public class HomeController : Controller
     {
+        ShopDBContext db = new ShopDBContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -29,9 +30,11 @@ namespace CoffeeShop.Controllers
             return View("~/Views/Account/Index.cshtml");
         }
 
-        public IActionResult RegisterCustomer(CustomerModel customer)
+        public IActionResult RegisterCustomer(Users user)
         {
-            return View("~/Views/Home/AuthorizedLanding.cshtml", customer);
+            db.Users.Add(user);
+            db.SaveChanges();
+            return View("~/Views/Home/AuthorizedLanding.cshtml", user);
         }
 
         public IActionResult AuthorizedLanding()
