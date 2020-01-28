@@ -32,9 +32,16 @@ namespace CoffeeShop.Controllers
 
         public IActionResult RegisterCustomer(Users user)
         {
-            db.Users.Add(user);
-            db.SaveChanges();
-            return View("~/Views/Home/AuthorizedLanding.cshtml", user);
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return View("~/Views/Home/AuthorizedLanding.cshtml", user);
+            }
+            catch(Exception ex)
+            {
+                return View("~/Views/Shared/Error.cshtml");
+            }
         }
 
         public IActionResult AuthorizedLanding()

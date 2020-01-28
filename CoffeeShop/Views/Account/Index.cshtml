@@ -1,9 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Register A New Customer";
 }
-    <head>
-        <script src="jquery-3.4.1.min.js"></script>
-    </head>
+
 <h1>Index</h1>
 <form asp-controller="Home" asp-action="RegisterCustomer" id="registerUser">
     <div class="row">
@@ -57,6 +55,7 @@
         </div>
     </div>
     <input type="button" class="btn btn-primary" value="Submit" onclick="SubmitForm()"/>
+    <input type="submit" hidden id="submit"/>
 </form>
 
 
@@ -67,7 +66,10 @@
         if (ogPass != unOgPass) {
             alert("Passwords do not match, please try again.");
         } else {
-            document.querySelector("#registerUser").submit();
+            Submit();
         }
+    }
+    function Submit() {
+        document.getElementById("submit").click();
     }
 </script>
